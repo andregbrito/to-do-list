@@ -1,7 +1,7 @@
 import { useState } from "react";
 import './styles/home.sass';
 
-import {Todo} from "./components/Todo";
+import { Todo } from "./components/Todo";
 import TodoForm from "./components/TodoForm";
 
 
@@ -23,15 +23,28 @@ export function Home() {
     },
     ]);
 
+    const addTodo = (text, category) => {
+        const newTodos = [...todos, {
+            id: Math.floor(Math.random() *1000),
+            text,
+            category,
+            isCompleted: false,
+            },
+        ];
+    
+
+    setTodos(newTodos);
+};
+
     return (
         <div className="sidebar">
             <h1>To do list</h1>
             <div className="todo-list">
                 {todos.map((todo) => (
-                    <Todo todo={todo} />                    
+                    <Todo key={todo.id} todo={todo} />                    
                 ))}
             </div>
-            <TodoForm />
+            <TodoForm addTodo={addTodo} />
         </div>
     );
 };
