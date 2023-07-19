@@ -1,6 +1,12 @@
 import { useState } from "react";
 import './styles/home.sass';
-import { Board } from "./components/Sidebar";
+
+import {Todo} from "./components/Todo";
+import TodoForm from "./components/TodoForm";
+
+
+
+
 export function Home() {
     const [todos, setTodos] = useState([
     {
@@ -18,22 +24,14 @@ export function Home() {
     ]);
 
     return (
-        <Board>
+        <div className="sidebar">
+            <h1>To do list</h1>
             <div className="todo-list">
                 {todos.map((todo) => (
-                    <div className="todo">
-                        <div className="content">
-                            <p>{todo.text}</p>
-                            <p className="category">({todo.category})</p>
-                        </div>
-                        <div>
-                            <button>Done</button>
-                            <button>x</button>
-                        </div>
-                    </div>
+                    <Todo todo={todo} />                    
                 ))}
             </div>
-            </Board>
-
-                )};
-s
+            <TodoForm />
+        </div>
+    );
+};
