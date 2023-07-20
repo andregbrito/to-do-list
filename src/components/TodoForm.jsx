@@ -20,7 +20,7 @@ const TodoForm = ({ addTodo }) => {
       <form onSubmit={handleSubmit}>
         <input
               type="text"
-              placeholder='Title'
+              placeholder='Title of your task'
               value={value}
               onChange={(e) => setValue(e.target.value)}
         />
